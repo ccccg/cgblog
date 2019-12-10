@@ -1,0 +1,21 @@
+#mysql≈‰÷√
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/cgblog?characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+  thymeleaf:
+    cache: false
+    suffix: .html
+    prefix: classpath:/templates/views/
