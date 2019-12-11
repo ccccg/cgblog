@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>update</title>
+</head>
+<body>
+    <form action="/manage/updateArticle" method="post">
+        <input type = "hidden" name = "id" th:value="${oldArticle.id}"/>
+        title:<input type = "text" name = "title" th:text="${oldArticle.title}"/><br/>
+        content:<textarea name = "content" th:text="${oldArticle.content}"></textarea><br/>
+    <input type = "submit" value = "save"/>
+</form>
+</body>
+</html>
