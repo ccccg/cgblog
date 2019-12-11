@@ -6,13 +6,14 @@
     <title>首页</title>
 </head>
 <body>
-    <form action="/addArticle" method="post">
+    <form action="/manage/addArticle" method="post">
         title:<input type = "text" name = "title"/><br/>
         content:<textarea name = "content"></textarea><br/>
         <input type = "submit" value = "save"></input>
     </form>
     <tr th:each="article:${list}">
         <td th:text="${article.title}">title:</td>
+        <a th:href="@{'/manage/deleteArticle/'+${article.id}}">删除</a>
     </tr>
 </body>
 </html>

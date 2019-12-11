@@ -18,9 +18,12 @@ public class ArticleServiceImpl implements ArticleService {
         return articleRepository.findAll();
     }
 
-    @Override
     public Article saveArticle(Article article) {
         return articleRepository.save(article);
+    }
+
+    public void deleteArticle(Long id) {
+        articleRepository.deleteById(id);
     }
 
 

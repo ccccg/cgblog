@@ -11,4 +11,5 @@ public interface ArticleService {
 
     Article saveArticle(Article article);
 
+    void deleteArticle(Long id);
 }
