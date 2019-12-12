@@ -1,4 +1,4 @@
-#mysqlÅäÖÃ
+#mysqlï¿½ï¿½ï¿½ï¿½
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/cgblog?characterEncoding=UTF-8
@@ -19,3 +19,6 @@ spring:
     cache: false
     suffix: .html
     prefix: classpath:/templates/views/
+
+logging:
+  path: /spring/log

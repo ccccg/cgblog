@@ -6,7 +6,12 @@
     <title>首页</title>
 </head>
 <body>
+    <div th:if="${session.user==null}"><a th:href="@{'/toRegist'}">注册</a>
+        <a th:href="@{'/toLogin'}">登录</a></div>
+    <div th:if="${session.user!=null}"><span th:text="${session.user.name}"></span>
+        <a th:href="@{'/logout'}">注销</a></div>
     <a th:href="@{'/toAddArticle'}">添加文章</a>
+    <a th:href="@{'/testRedirect'}">test</a>
     <tr th:each="article:${list}">
         <td th:text="${article.title}">title:</td>
         <a th:href="@{'/manage/deleteArticle/'+${article.id}}">删除</a>

@@ -19,7 +19,6 @@ public class ArticleController {
     ArticleService service;
 
 
-
     @PostMapping(value = "/addArticle")
     public String addArticle(Article article,Model model){
         LOGGER.info("add article title: " + article.getTitle());

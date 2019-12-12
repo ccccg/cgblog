@@ -1,6 +1,7 @@
 package com.cgblog.blog.controller;
 
 
+import com.cgblog.blog.common.ShowAllArticle;
 import com.cgblog.blog.domain.Article;
 import com.cgblog.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +19,18 @@ public class IndexController {
 
     @GetMapping({"/","/index"})
     public String getAllArticles(Model model){
+        ShowAllArticle.showAll(service,model);
 
-        List<Article> articleList = service.findAllArticle();
-        System.out.println(articleList.size());
-        model.addAttribute("list",articleList);
         return "index";
     }
 
     @GetMapping("/toAddArticle")
     public String toAddArticle(){
         return "add";
+    }
+
+    @GetMapping("/testRedirect")
+    public String testRedirect(){
+        return "redirect:/toAddArticle";
     }
 }
