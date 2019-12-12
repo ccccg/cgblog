@@ -29,4 +29,9 @@ public class IndexController {
     public String toAddArticle(){
         return "add";
     }
+
+    @GetMapping("/testRedirect")
+    public String testRedirect(){
+        return "redirect:/toAddArticle";
+    }
 }
