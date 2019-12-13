@@ -1,9 +1,8 @@
 package com.cgblog.blog.controller;
 
 
-import com.cgblog.blog.common.ShowAllArticle;
+import com.cgblog.blog.common.ShowArticle;
 import com.cgblog.blog.domain.User;
-import com.cgblog.blog.service.ArticleService;
 import com.cgblog.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +19,10 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
     @Autowired
-    ArticleService articleService;
+    ShowArticle show;
+
 
     @PostMapping("/regist")
     public String regist(User user){
@@ -37,7 +38,7 @@ public class UserController {
         session.setAttribute("user",newUser);
         if(newUser!=null){
             model.addAttribute("user",newUser);
-            ShowAllArticle.showAll(articleService,model);
+            show.showAll(model);
             return "index";
         }else{
             String error = "loginfail";
@@ -51,7 +52,7 @@ public class UserController {
                          HttpServletResponse res,Model model){
         HttpSession session = req.getSession();
         session.invalidate();
-        ShowAllArticle.showAll(articleService,model);
+        show.showAll(model);
         return "index";
     }
 }

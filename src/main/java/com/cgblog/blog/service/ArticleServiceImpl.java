@@ -20,6 +20,7 @@ public class ArticleServiceImpl implements ArticleService {
     ArticleRepository articleRepository;
 
     public List findAllArticle(){
+        LOGGER.info("findAllArticle");
         return articleRepository.findAll();
     }
 

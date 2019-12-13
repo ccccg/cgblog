@@ -8,4 +8,6 @@ public interface LoginUserRepository extends UserRepository<User,String>{
 
     @Override
     Optional<User> findUserByIdAndPassword(String id, String password);
+
+
 }

@@ -1,5 +1,6 @@
 package com.cgblog.blog.controller;
 
+import com.cgblog.blog.common.ShowArticle;
 import com.cgblog.blog.domain.Article;
 import com.cgblog.blog.service.ArticleService;
 import javafx.scene.shape.ArcTo;
@@ -11,40 +12,49 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/manage")
+
 public class ArticleController {
 
     static final Logger LOGGER = LoggerFactory.getLogger(ArticleController.class);
     @Autowired
     ArticleService service;
+    @Autowired
+    ShowArticle show;
+
+    @GetMapping("/article")
+    public String showArticle(@RequestParam("id")Long id, Model model){
+        LOGGER.info("show article:" + id);
+        show.showOne(model, id);
+        return "article";
+    }
 
 
-    @PostMapping(value = "/addArticle")
+    @PostMapping(value = "/manage/addArticle")
     public String addArticle(Article article,Model model){
         LOGGER.info("add article title: " + article.getTitle());
         service.saveArticle(article);
         //先插入到数据库中就会为对象赋值
         LOGGER.info("article count: " + article.getId());
-        model.addAttribute("list",service.findAllArticle());
+        show.showAll(model);
         return "index";
     }
 
-    @GetMapping(value = "/deleteArticle/{id}")
-    public String deleteArticle(@PathVariable("id") Long id, Model model){
+    @GetMapping(value = "/manage/deleteArticle")
+    public String deleteArticle(@RequestParam("id") Long id, Model model){
         LOGGER.info("delete article: "+id);
         service.deleteArticle(id);
-        model.addAttribute("list",service.findAllArticle());
+        show.showAll(model);
         return "index";
     }
 
-    @GetMapping("/toUpdateArticle")
+    @GetMapping("/manage/toUpdateArticle")
     public String toUpdateArticle(@RequestParam("id") Long id, Model model){
         Article oldArticle = service.findArticleById(id);
         model.addAttribute("oldArticle",oldArticle);
         return "update";
     }
 
-    @PostMapping("/updateArticle")
+    @PostMapping("/manage/updateArticle")
     public String toUpdateArticle(Article article, Model model){
         LOGGER.info("update article: "+article.getId());
         Article oldArticle = service.findArticleById(article.getId());

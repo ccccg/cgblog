@@ -1,7 +1,7 @@
 package com.cgblog.blog.controller;
 
 
-import com.cgblog.blog.common.ShowAllArticle;
+import com.cgblog.blog.common.ShowArticle;
 import com.cgblog.blog.domain.Article;
 import com.cgblog.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +15,11 @@ import java.util.List;
 @Controller
 public class IndexController {
     @Autowired
-    ArticleService service;
+    ShowArticle show;
 
     @GetMapping({"/","/index"})
     public String getAllArticles(Model model){
-        ShowAllArticle.showAll(service,model);
-
+        show.showAll(model);
         return "index";
     }
 

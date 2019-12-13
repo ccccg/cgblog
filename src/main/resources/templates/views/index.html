@@ -13,8 +13,8 @@
     <a th:href="@{'/toAddArticle'}">添加文章</a>
     <a th:href="@{'/testRedirect'}">test</a>
     <tr th:each="article:${list}">
-        <td th:text="${article.title}">title:</td>
-        <a th:href="@{'/manage/deleteArticle/'+${article.id}}">删除</a>
+        <a th:href="@{'/article?id='+${article.id}}" th:text="${article.title}"></a>
+        <a th:href="@{'/manage/deleteArticle?id='+${article.id}}">删除</a>
         <a th:href="@{'/manage/toUpdateArticle?id='+${article.id}}">修改</a>
     </tr>
 </body>
