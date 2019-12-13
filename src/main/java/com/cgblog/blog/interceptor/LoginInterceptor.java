@@ -13,6 +13,7 @@ import java.io.IOException;
 
 public class LoginInterceptor implements HandlerInterceptor {
 
+
     static final Logger LOGGER = LoggerFactory.getLogger(LoginInterceptor.class);
 
     @Override
@@ -24,11 +25,11 @@ public class LoginInterceptor implements HandlerInterceptor {
         Object obj = session.getAttribute("user");
         User user = (User) obj;
 
-
         if(user!=null&&user.getId().equals("cg123")) {
             return true;
         }
         LOGGER.info("redirect to login");
+
         response.sendRedirect("/toLogin");
         return false;
     }

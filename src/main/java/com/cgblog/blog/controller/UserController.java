@@ -1,6 +1,7 @@
 package com.cgblog.blog.controller;
 
 
+
 import com.cgblog.blog.common.ShowArticle;
 import com.cgblog.blog.domain.User;
 import com.cgblog.blog.service.UserService;
@@ -19,6 +20,7 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
 
     @Autowired
     ShowArticle show;
@@ -55,4 +57,5 @@ public class UserController {
         show.showAll(model);
         return "index";
     }
+
 }

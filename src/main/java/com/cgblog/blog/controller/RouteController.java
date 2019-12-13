@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class RouteController {
 
+
     static final Logger LOGGER = LoggerFactory.getLogger(RouteController.class);
 
     @GetMapping("/toRegist")
