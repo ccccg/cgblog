@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ArticleRepository extends CrudRepository<Article,Long> {
+public interface ArticleRepository extends JpaRepository<Article,Long> {
 
     @Override
     List<Article> findAll();
@@ -16,5 +16,6 @@ public interface ArticleRepository extends CrudRepository<Article,Long> {
     @Override
     Article save(Article s);
 
+    List<Article> findByTitleLike(String namelike);
 
 }

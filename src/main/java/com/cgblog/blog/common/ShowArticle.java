@@ -24,6 +24,11 @@ public class ShowArticle {
 
     }
 
+    public void showPortion(Model model, String namelike){
+        List<Article> articleList = articleService.findArticleByNameLike(namelike);
+        model.addAttribute("list",articleList);
+    }
+
     public void showAll(Model model){
         System.out.println(articleService==null);
         List<Article> articleList = articleService.findAllArticle();

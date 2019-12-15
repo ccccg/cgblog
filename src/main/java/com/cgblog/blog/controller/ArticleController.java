@@ -28,6 +28,11 @@ public class ArticleController {
         return "article";
     }
 
+    @PostMapping("/findArticle")
+    public String showArticlesLike(String namelike, Model model){
+        show.showPortion(model, namelike);
+        return "index";
+    }
 
     @PostMapping(value = "/manage/addArticle")
     public String addArticle(Article article,Model model){
@@ -64,4 +69,6 @@ public class ArticleController {
         model.addAttribute("article"+oldArticle);
         return "article";
     }
+
+
 }

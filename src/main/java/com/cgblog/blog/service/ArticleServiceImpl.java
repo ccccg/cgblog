@@ -5,6 +5,7 @@ import com.cgblog.blog.repository.ArticleRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +33,10 @@ public class ArticleServiceImpl implements ArticleService {
         articleRepository.deleteById(id);
     }
 
+    @Cacheable(cacheNames = "article", key = "#id")
     @Override
     public Article findArticleById(Long id) {
+        LOGGER.info("findArticleById: "+ id);
         Optional<Article> opt = articleRepository.findById(id);
         if(opt.isPresent()){
             return opt.get();
@@ -41,6 +44,13 @@ public class ArticleServiceImpl implements ArticleService {
             LOGGER.error("can not find article by: "+ id);
             return null;
         }
+    }
+
+    @Override
+    public List findArticleByNameLike(String namelike) {
+        LOGGER.info("find by name like :" + namelike);
+        List<Article> list = articleRepository.findByTitleLike("%" + namelike + "%");
+        return list;
     }
 
 
