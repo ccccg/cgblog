@@ -17,6 +17,11 @@
         <a th:href="@{'/manage/deleteArticle?id='+${article.id}}">删除</a>
         <a th:href="@{'/manage/toUpdateArticle?id='+${article.id}}">修改</a>
     </tr>
+    <tr th:each="article1:${pagelist}">
+        <a th:href="@{'/article?id='+${article1.id}}" th:text="${article1.title}"></a>
+        <a th:href="@{'/manage/deleteArticle?id='+${article1.id}}">删除</a>
+        <a th:href="@{'/manage/toUpdateArticle?id='+${article1.id}}">修改</a>
+    </tr>
     <form action="/findArticle" method="post">
         <input type="text" name = "namelike" />
         <input type="submit" value = "search"/>

@@ -20,6 +20,7 @@ public class IndexController {
     @GetMapping({"/","/index"})
     public String getAllArticles(Model model){
         show.showAll(model);
+        show.showPage(model,0);
         return "index";
     }
 
